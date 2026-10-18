@@ -1,0 +1,20 @@
+# Python 3.14 (tested with 3.14.3). Tk is also needed - see README.md.
+# Everything else used by gui.py is in the standard library.
+
+# Direct dependencies
+requests==2.34.2       # Sporting Life scraping (sl_results.py)
+csvtotable==2.1.1      # external command used by the "CSV to table" tab
+tzdata==2026.5; sys_platform == "win32"  # time zone data for Windows
+
+# Pulled in by requests
+certifi==2026.7.22
+charset-normalizer==3.5.2
+idna==3.20
+urllib3==2.8.0
+
+# Pulled in by csvtotable
+click==8.5.0
+Jinja2==3.1.6
+MarkupSafe==3.0.4
+six==1.17.0
+unicodecsv==0.14.1

@@ -1,0 +1,493 @@
+{
+  "Runners": [
+    {
+      "field": "date",
+      "header": "date",
+      "include": true
+    },
+    {
+      "field": "rp_course",
+      "header": "course",
+      "include": true
+    },
+    {
+      "field": "race_id",
+      "header": "race_id",
+      "include": true
+    },
+    {
+      "field": "time",
+      "header": "off",
+      "include": true
+    },
+    {
+      "field": "race_name",
+      "header": "race_name",
+      "include": true
+    },
+    {
+      "field": "rp_type",
+      "header": "type",
+      "include": true
+    },
+    {
+      "field": "rp_class",
+      "header": "class",
+      "include": true
+    },
+    {
+      "field": "rp_pattern",
+      "header": "pattern",
+      "include": true
+    },
+    {
+      "field": "rp_rating_band",
+      "header": "rating_band",
+      "include": true
+    },
+    {
+      "field": "rp_age_band",
+      "header": "age_band",
+      "include": true
+    },
+    {
+      "field": "rp_sex_rest",
+      "header": "sex_rest",
+      "include": true
+    },
+    {
+      "field": "rp_dist",
+      "header": "dist",
+      "include": true
+    },
+    {
+      "field": "rp_going",
+      "header": "going",
+      "include": true
+    },
+    {
+      "field": "ran",
+      "header": "ran",
+      "include": true
+    },
+    {
+      "field": "cloth",
+      "header": "num",
+      "include": true
+    },
+    {
+      "field": "rp_pos",
+      "header": "pos",
+      "include": true
+    },
+    {
+      "field": "draw",
+      "header": "draw",
+      "include": true
+    },
+    {
+      "field": "rp_ovr_btn",
+      "header": "ovr_btn",
+      "include": true
+    },
+    {
+      "field": "rp_btn",
+      "header": "btn",
+      "include": true
+    },
+    {
+      "field": "horse",
+      "header": "horse",
+      "include": true
+    },
+    {
+      "field": "horse_age",
+      "header": "age",
+      "include": true
+    },
+    {
+      "field": "rp_sex",
+      "header": "sex",
+      "include": true
+    },
+    {
+      "field": "weight",
+      "header": "wgt",
+      "include": true
+    },
+    {
+      "field": "rp_hg",
+      "header": "hg",
+      "include": true
+    },
+    {
+      "field": "rp_time",
+      "header": "time",
+      "include": true
+    },
+    {
+      "field": "sp",
+      "header": "sp",
+      "include": true
+    },
+    {
+      "field": "jockey",
+      "header": "jockey",
+      "include": true
+    },
+    {
+      "field": "trainer",
+      "header": "trainer",
+      "include": true
+    },
+    {
+      "field": "rp_prize",
+      "header": "prize",
+      "include": true
+    },
+    {
+      "field": "official_rating",
+      "header": "or",
+      "include": true
+    },
+    {
+      "field": "__blank_1",
+      "header": "rpr",
+      "include": true
+    },
+    {
+      "field": "__blank_2",
+      "header": "ts",
+      "include": true
+    },
+    {
+      "field": "sire",
+      "header": "sire",
+      "include": true
+    },
+    {
+      "field": "dam",
+      "header": "dam",
+      "include": true
+    },
+    {
+      "field": "damsire",
+      "header": "damsire",
+      "include": true
+    },
+    {
+      "field": "owner",
+      "header": "owner",
+      "include": true
+    },
+    {
+      "field": "comment",
+      "header": "comment",
+      "include": true
+    },
+    {
+      "field": "course",
+      "header": "course",
+      "include": false
+    },
+    {
+      "field": "position",
+      "header": "position",
+      "include": false
+    },
+    {
+      "field": "status",
+      "header": "status",
+      "include": false
+    },
+    {
+      "field": "beaten",
+      "header": "beaten",
+      "include": false
+    },
+    {
+      "field": "horse_id",
+      "header": "horse_id",
+      "include": false
+    },
+    {
+      "field": "sex",
+      "header": "sex",
+      "include": false
+    },
+    {
+      "field": "headgear",
+      "header": "headgear",
+      "include": false
+    },
+    {
+      "field": "jockey_claim",
+      "header": "jockey_claim",
+      "include": false
+    },
+    {
+      "field": "bet_movements",
+      "header": "bet_movements",
+      "include": false
+    },
+    {
+      "field": "country",
+      "header": "country",
+      "include": false
+    },
+    {
+      "field": "off_time",
+      "header": "off_time",
+      "include": false
+    },
+    {
+      "field": "race_class",
+      "header": "race_class",
+      "include": false
+    },
+    {
+      "field": "age",
+      "header": "age",
+      "include": false
+    },
+    {
+      "field": "distance",
+      "header": "distance",
+      "include": false
+    },
+    {
+      "field": "going",
+      "header": "going",
+      "include": false
+    },
+    {
+      "field": "surface",
+      "header": "surface",
+      "include": false
+    },
+    {
+      "field": "handicap",
+      "header": "handicap",
+      "include": false
+    },
+    {
+      "field": "runners",
+      "header": "runners",
+      "include": false
+    },
+    {
+      "field": "winning_time",
+      "header": "winning_time",
+      "include": false
+    },
+    {
+      "field": "stage",
+      "header": "stage",
+      "include": false
+    },
+    {
+      "field": "winner_prize",
+      "header": "winner_prize",
+      "include": false
+    },
+    {
+      "field": "tote_win",
+      "header": "tote_win",
+      "include": false
+    },
+    {
+      "field": "tote_place",
+      "header": "tote_place",
+      "include": false
+    },
+    {
+      "field": "exacta",
+      "header": "exacta",
+      "include": false
+    },
+    {
+      "field": "trifecta",
+      "header": "trifecta",
+      "include": false
+    },
+    {
+      "field": "tricast",
+      "header": "tricast",
+      "include": false
+    },
+    {
+      "field": "straight_forecast",
+      "header": "straight_forecast",
+      "include": false
+    },
+    {
+      "field": "swingers",
+      "header": "swingers",
+      "include": false
+    },
+    {
+      "field": "placepot",
+      "header": "placepot",
+      "include": false
+    },
+    {
+      "field": "quadpot",
+      "header": "quadpot",
+      "include": false
+    },
+    {
+      "field": "book_percentage",
+      "header": "book_percentage",
+      "include": false
+    },
+    {
+      "field": "stewards",
+      "header": "stewards",
+      "include": false
+    }
+  ],
+  "_dataset": "Runners",
+  "Races": [
+    {
+      "field": "race_id",
+      "header": "race_id",
+      "include": true
+    },
+    {
+      "field": "date",
+      "header": "date",
+      "include": true
+    },
+    {
+      "field": "course",
+      "header": "course",
+      "include": true
+    },
+    {
+      "field": "time",
+      "header": "time",
+      "include": true
+    },
+    {
+      "field": "race_name",
+      "header": "race_name",
+      "include": true
+    },
+    {
+      "field": "country",
+      "header": "country",
+      "include": true
+    },
+    {
+      "field": "off_time",
+      "header": "off_time",
+      "include": false
+    },
+    {
+      "field": "race_class",
+      "header": "race_class",
+      "include": true
+    },
+    {
+      "field": "age",
+      "header": "age",
+      "include": true
+    },
+    {
+      "field": "distance",
+      "header": "distance",
+      "include": true
+    },
+    {
+      "field": "going",
+      "header": "going",
+      "include": true
+    },
+    {
+      "field": "surface",
+      "header": "surface",
+      "include": true
+    },
+    {
+      "field": "handicap",
+      "header": "handicap",
+      "include": true
+    },
+    {
+      "field": "runners",
+      "header": "runners",
+      "include": true
+    },
+    {
+      "field": "winning_time",
+      "header": "winning_time",
+      "include": true
+    },
+    {
+      "field": "stage",
+      "header": "stage",
+      "include": true
+    },
+    {
+      "field": "winner_prize",
+      "header": "winner_prize",
+      "include": true
+    },
+    {
+      "field": "tote_win",
+      "header": "tote_win",
+      "include": true
+    },
+    {
+      "field": "tote_place",
+      "header": "tote_place",
+      "include": true
+    },
+    {
+      "field": "exacta",
+      "header": "exacta",
+      "include": true
+    },
+    {
+      "field": "trifecta",
+      "header": "trifecta",
+      "include": true
+    },
+    {
+      "field": "tricast",
+      "header": "tricast",
+      "include": true
+    },
+    {
+      "field": "straight_forecast",
+      "header": "straight_forecast",
+      "include": true
+    },
+    {
+      "field": "swingers",
+      "header": "swingers",
+      "include": true
+    },
+    {
+      "field": "placepot",
+      "header": "placepot",
+      "include": true
+    },
+    {
+      "field": "quadpot",
+      "header": "quadpot",
+      "include": true
+    },
+    {
+      "field": "book_percentage",
+      "header": "book_percentage",
+      "include": true
+    },
+    {
+      "field": "stewards",
+      "header": "stewards",
+      "include": true
+    }
+  ],
+  "_exclude_nr": true
+}
