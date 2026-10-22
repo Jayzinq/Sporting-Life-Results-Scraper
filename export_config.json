@@ -489,5 +489,798 @@
       "include": true
     }
   ],
-  "_exclude_nr": true
+  "_exclude_nr": true,
+  "racecards": {
+    "Runners": [
+      {
+        "field": "race_id",
+        "header": "race_id",
+        "include": true
+      },
+      {
+        "field": "date",
+        "header": "date",
+        "include": true
+      },
+      {
+        "field": "course",
+        "header": "course",
+        "include": true
+      },
+      {
+        "field": "time",
+        "header": "time",
+        "include": true
+      },
+      {
+        "field": "race_name",
+        "header": "race_name",
+        "include": true
+      },
+      {
+        "field": "cloth",
+        "header": "cloth",
+        "include": true
+      },
+      {
+        "field": "draw",
+        "header": "draw",
+        "include": true
+      },
+      {
+        "field": "horse",
+        "header": "horse",
+        "include": true
+      },
+      {
+        "field": "horse_id",
+        "header": "horse_id",
+        "include": true
+      },
+      {
+        "field": "horse_age",
+        "header": "horse_age",
+        "include": true
+      },
+      {
+        "field": "sex",
+        "header": "sex",
+        "include": true
+      },
+      {
+        "field": "colour",
+        "header": "colour",
+        "include": true
+      },
+      {
+        "field": "foaled",
+        "header": "foaled",
+        "include": true
+      },
+      {
+        "field": "sire",
+        "header": "sire",
+        "include": true
+      },
+      {
+        "field": "dam",
+        "header": "dam",
+        "include": true
+      },
+      {
+        "field": "damsire",
+        "header": "damsire",
+        "include": true
+      },
+      {
+        "field": "form",
+        "header": "form",
+        "include": true
+      },
+      {
+        "field": "last_ran_days",
+        "header": "last_ran_days",
+        "include": true
+      },
+      {
+        "field": "weight",
+        "header": "weight",
+        "include": true
+      },
+      {
+        "field": "headgear",
+        "header": "headgear",
+        "include": true
+      },
+      {
+        "field": "headgear_first_time",
+        "header": "headgear_first_time",
+        "include": true
+      },
+      {
+        "field": "official_rating",
+        "header": "official_rating",
+        "include": true
+      },
+      {
+        "field": "jockey",
+        "header": "jockey",
+        "include": true
+      },
+      {
+        "field": "jockey_claim",
+        "header": "jockey_claim",
+        "include": true
+      },
+      {
+        "field": "trainer",
+        "header": "trainer",
+        "include": true
+      },
+      {
+        "field": "owner",
+        "header": "owner",
+        "include": true
+      },
+      {
+        "field": "status",
+        "header": "status",
+        "include": true
+      },
+      {
+        "field": "odds",
+        "header": "odds",
+        "include": true
+      },
+      {
+        "field": "forecast_odds",
+        "header": "forecast_odds",
+        "include": true
+      },
+      {
+        "field": "best_odds",
+        "header": "best_odds",
+        "include": true
+      },
+      {
+        "field": "best_odds_decimal",
+        "header": "best_odds_decimal",
+        "include": true
+      },
+      {
+        "field": "best_odds_bookie",
+        "header": "best_odds_bookie",
+        "include": true
+      },
+      {
+        "field": "timeform_stars",
+        "header": "timeform_stars",
+        "include": true
+      },
+      {
+        "field": "sl_rating",
+        "header": "sl_rating",
+        "include": true
+      },
+      {
+        "field": "verdict_pick",
+        "header": "verdict_pick",
+        "include": true
+      },
+      {
+        "field": "stats",
+        "header": "stats",
+        "include": true
+      },
+      {
+        "field": "runs",
+        "header": "runs",
+        "include": true
+      },
+      {
+        "field": "wins",
+        "header": "wins",
+        "include": true
+      },
+      {
+        "field": "placed",
+        "header": "placed",
+        "include": true
+      },
+      {
+        "field": "commentary",
+        "header": "commentary",
+        "include": true
+      },
+      {
+        "field": "last1_date",
+        "header": "last1_date",
+        "include": false
+      },
+      {
+        "field": "last1_course",
+        "header": "last1_course",
+        "include": false
+      },
+      {
+        "field": "last1_pos",
+        "header": "last1_pos",
+        "include": false
+      },
+      {
+        "field": "last1_ran",
+        "header": "last1_ran",
+        "include": false
+      },
+      {
+        "field": "last1_dist",
+        "header": "last1_dist",
+        "include": false
+      },
+      {
+        "field": "last1_going",
+        "header": "last1_going",
+        "include": false
+      },
+      {
+        "field": "last1_class",
+        "header": "last1_class",
+        "include": false
+      },
+      {
+        "field": "last1_weight",
+        "header": "last1_weight",
+        "include": false
+      },
+      {
+        "field": "last1_odds",
+        "header": "last1_odds",
+        "include": false
+      },
+      {
+        "field": "last1_comment",
+        "header": "last1_comment",
+        "include": false
+      },
+      {
+        "field": "last2_date",
+        "header": "last2_date",
+        "include": false
+      },
+      {
+        "field": "last2_course",
+        "header": "last2_course",
+        "include": false
+      },
+      {
+        "field": "last2_pos",
+        "header": "last2_pos",
+        "include": false
+      },
+      {
+        "field": "last2_ran",
+        "header": "last2_ran",
+        "include": false
+      },
+      {
+        "field": "last2_dist",
+        "header": "last2_dist",
+        "include": false
+      },
+      {
+        "field": "last2_going",
+        "header": "last2_going",
+        "include": false
+      },
+      {
+        "field": "last2_class",
+        "header": "last2_class",
+        "include": false
+      },
+      {
+        "field": "last2_weight",
+        "header": "last2_weight",
+        "include": false
+      },
+      {
+        "field": "last2_odds",
+        "header": "last2_odds",
+        "include": false
+      },
+      {
+        "field": "last2_comment",
+        "header": "last2_comment",
+        "include": false
+      },
+      {
+        "field": "last3_date",
+        "header": "last3_date",
+        "include": false
+      },
+      {
+        "field": "last3_course",
+        "header": "last3_course",
+        "include": false
+      },
+      {
+        "field": "last3_pos",
+        "header": "last3_pos",
+        "include": false
+      },
+      {
+        "field": "last3_ran",
+        "header": "last3_ran",
+        "include": false
+      },
+      {
+        "field": "last3_dist",
+        "header": "last3_dist",
+        "include": false
+      },
+      {
+        "field": "last3_going",
+        "header": "last3_going",
+        "include": false
+      },
+      {
+        "field": "last3_class",
+        "header": "last3_class",
+        "include": false
+      },
+      {
+        "field": "last3_weight",
+        "header": "last3_weight",
+        "include": false
+      },
+      {
+        "field": "last3_odds",
+        "header": "last3_odds",
+        "include": false
+      },
+      {
+        "field": "last3_comment",
+        "header": "last3_comment",
+        "include": false
+      },
+      {
+        "field": "rp_sex",
+        "header": "rp_sex",
+        "include": false
+      },
+      {
+        "field": "rp_hg",
+        "header": "rp_hg",
+        "include": false
+      },
+      {
+        "field": "country",
+        "header": "country",
+        "include": false
+      },
+      {
+        "field": "race_class",
+        "header": "race_class",
+        "include": true
+      },
+      {
+        "field": "age",
+        "header": "age",
+        "include": false
+      },
+      {
+        "field": "distance",
+        "header": "distance",
+        "include": true
+      },
+      {
+        "field": "going",
+        "header": "going",
+        "include": true
+      },
+      {
+        "field": "surface",
+        "header": "surface",
+        "include": false
+      },
+      {
+        "field": "handicap",
+        "header": "handicap",
+        "include": false
+      },
+      {
+        "field": "runners",
+        "header": "runners",
+        "include": false
+      },
+      {
+        "field": "declared",
+        "header": "declared",
+        "include": false
+      },
+      {
+        "field": "places",
+        "header": "places",
+        "include": false
+      },
+      {
+        "field": "stage",
+        "header": "stage",
+        "include": false
+      },
+      {
+        "field": "prize_fund",
+        "header": "prize_fund",
+        "include": true
+      },
+      {
+        "field": "winner_prize",
+        "header": "winner_prize",
+        "include": false
+      },
+      {
+        "field": "prizes",
+        "header": "prizes",
+        "include": false
+      },
+      {
+        "field": "betting_forecast",
+        "header": "betting_forecast",
+        "include": false
+      },
+      {
+        "field": "book_percentage",
+        "header": "book_percentage",
+        "include": false
+      },
+      {
+        "field": "verdict",
+        "header": "verdict",
+        "include": false
+      },
+      {
+        "field": "verdict_1st",
+        "header": "verdict_1st",
+        "include": false
+      },
+      {
+        "field": "verdict_2nd",
+        "header": "verdict_2nd",
+        "include": false
+      },
+      {
+        "field": "verdict_3rd",
+        "header": "verdict_3rd",
+        "include": false
+      },
+      {
+        "field": "last_year_winner",
+        "header": "last_year_winner",
+        "include": false
+      },
+      {
+        "field": "last_year_trainer",
+        "header": "last_year_trainer",
+        "include": false
+      },
+      {
+        "field": "last_year_jockey",
+        "header": "last_year_jockey",
+        "include": false
+      },
+      {
+        "field": "last_year_weight",
+        "header": "last_year_weight",
+        "include": false
+      },
+      {
+        "field": "last_year_odds",
+        "header": "last_year_odds",
+        "include": false
+      },
+      {
+        "field": "url",
+        "header": "url",
+        "include": false
+      },
+      {
+        "field": "rp_course",
+        "header": "rp_course",
+        "include": false
+      },
+      {
+        "field": "rp_type",
+        "header": "rp_type",
+        "include": false
+      },
+      {
+        "field": "rp_class",
+        "header": "rp_class",
+        "include": false
+      },
+      {
+        "field": "rp_pattern",
+        "header": "rp_pattern",
+        "include": false
+      },
+      {
+        "field": "rp_rating_band",
+        "header": "rp_rating_band",
+        "include": false
+      },
+      {
+        "field": "rp_age_band",
+        "header": "rp_age_band",
+        "include": false
+      },
+      {
+        "field": "rp_sex_rest",
+        "header": "rp_sex_rest",
+        "include": false
+      },
+      {
+        "field": "rp_dist",
+        "header": "rp_dist",
+        "include": false
+      },
+      {
+        "field": "rp_going",
+        "header": "rp_going",
+        "include": false
+      },
+      {
+        "field": "__blank_1",
+        "header": "",
+        "include": true
+      },
+      {
+        "field": "__blank_2",
+        "header": "",
+        "include": true
+      },
+      {
+        "field": "__blank_3",
+        "header": "",
+        "include": true
+      },
+      {
+        "field": "__blank_4",
+        "header": "",
+        "include": true
+      },
+      {
+        "field": "__blank_5",
+        "header": "",
+        "include": true
+      }
+    ],
+    "_dataset": "Races",
+    "_exclude_nr": false,
+    "Races": [
+      {
+        "field": "race_id",
+        "header": "race_id",
+        "include": true
+      },
+      {
+        "field": "date",
+        "header": "date",
+        "include": true
+      },
+      {
+        "field": "course",
+        "header": "course",
+        "include": true
+      },
+      {
+        "field": "country",
+        "header": "country",
+        "include": true
+      },
+      {
+        "field": "time",
+        "header": "time",
+        "include": true
+      },
+      {
+        "field": "race_name",
+        "header": "race_name",
+        "include": true
+      },
+      {
+        "field": "race_class",
+        "header": "race_class",
+        "include": true
+      },
+      {
+        "field": "age",
+        "header": "age",
+        "include": true
+      },
+      {
+        "field": "distance",
+        "header": "distance",
+        "include": true
+      },
+      {
+        "field": "going",
+        "header": "going",
+        "include": true
+      },
+      {
+        "field": "surface",
+        "header": "surface",
+        "include": true
+      },
+      {
+        "field": "handicap",
+        "header": "handicap",
+        "include": true
+      },
+      {
+        "field": "runners",
+        "header": "runners",
+        "include": true
+      },
+      {
+        "field": "declared",
+        "header": "declared",
+        "include": true
+      },
+      {
+        "field": "places",
+        "header": "places",
+        "include": true
+      },
+      {
+        "field": "stage",
+        "header": "stage",
+        "include": true
+      },
+      {
+        "field": "prize_fund",
+        "header": "prize_fund",
+        "include": true
+      },
+      {
+        "field": "winner_prize",
+        "header": "winner_prize",
+        "include": true
+      },
+      {
+        "field": "prizes",
+        "header": "prizes",
+        "include": true
+      },
+      {
+        "field": "betting_forecast",
+        "header": "betting_forecast",
+        "include": true
+      },
+      {
+        "field": "book_percentage",
+        "header": "book_percentage",
+        "include": true
+      },
+      {
+        "field": "verdict",
+        "header": "verdict",
+        "include": true
+      },
+      {
+        "field": "verdict_1st",
+        "header": "verdict_1st",
+        "include": true
+      },
+      {
+        "field": "verdict_2nd",
+        "header": "verdict_2nd",
+        "include": true
+      },
+      {
+        "field": "verdict_3rd",
+        "header": "verdict_3rd",
+        "include": true
+      },
+      {
+        "field": "last_year_winner",
+        "header": "last_year_winner",
+        "include": true
+      },
+      {
+        "field": "last_year_trainer",
+        "header": "last_year_trainer",
+        "include": true
+      },
+      {
+        "field": "last_year_jockey",
+        "header": "last_year_jockey",
+        "include": true
+      },
+      {
+        "field": "last_year_weight",
+        "header": "last_year_weight",
+        "include": true
+      },
+      {
+        "field": "last_year_odds",
+        "header": "last_year_odds",
+        "include": true
+      },
+      {
+        "field": "url",
+        "header": "url",
+        "include": true
+      },
+      {
+        "field": "rp_course",
+        "header": "rp_course",
+        "include": false
+      },
+      {
+        "field": "rp_type",
+        "header": "rp_type",
+        "include": false
+      },
+      {
+        "field": "rp_class",
+        "header": "rp_class",
+        "include": false
+      },
+      {
+        "field": "rp_pattern",
+        "header": "rp_pattern",
+        "include": false
+      },
+      {
+        "field": "rp_rating_band",
+        "header": "rp_rating_band",
+        "include": false
+      },
+      {
+        "field": "rp_age_band",
+        "header": "rp_age_band",
+        "include": false
+      },
+      {
+        "field": "rp_sex_rest",
+        "header": "rp_sex_rest",
+        "include": false
+      },
+      {
+        "field": "rp_dist",
+        "header": "rp_dist",
+        "include": false
+      },
+      {
+        "field": "rp_going",
+        "header": "rp_going",
+        "include": false
+      },
+      {
+        "field": "__blank_1",
+        "header": "",
+        "include": true
+      },
+      {
+        "field": "__blank_2",
+        "header": "",
+        "include": true
+      },
+      {
+        "field": "__blank_3",
+        "header": "",
+        "include": true
+      },
+      {
+        "field": "__blank_4",
+        "header": "",
+        "include": true
+      },
+      {
+        "field": "__blank_5",
+        "header": "",
+        "include": true
+      }
+    ]
+  }
 }

@@ -17,6 +17,7 @@ from csvtotable_gui import CsvToTableFrame
 from export_dialog import ExportDialog
 from join_csv_gui import JoinCsvApp
 from raceform_tk import RaceformTabs
+from racecards_gui import RacecardsFrame
 
 HERE = Path(__file__).resolve().parent
 
@@ -311,6 +312,7 @@ class App(tk.Tk):
         tabs = ttk.Notebook(self)
         tabs.pack(fill="both", expand=True)
         tabs.add(ResultsFrame(tabs), text="Scrape results")
+        tabs.add(RacecardsFrame(tabs), text="Racecards")
         tabs.add(JoinCsvApp(tabs), text="Join CSV files")
         tabs.add(CsvToTableFrame(tabs), text="CSV to table")
         self.raceform = RaceformTabs(self, tabs)

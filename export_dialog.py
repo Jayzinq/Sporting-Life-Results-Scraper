@@ -61,40 +61,50 @@ def blank_column(n):
     return {"field": f"{BLANK_PREFIX}{n}", "header": "", "include": True}
 
 
-def default_columns(dataset):
-    return ([{"field": f, "header": f, "include": f in DEFAULT_INCLUDED[dataset]}
-             for f in DATASETS[dataset]]
+def default_columns(dataset, datasets=DATASETS, default_included=DEFAULT_INCLUDED):
+    return ([{"field": f, "header": f, "include": f in default_included[dataset]}
+             for f in datasets[dataset]]
             + [blank_column(n) for n in range(1, DEFAULT_BLANKS + 1)])
 
 
-def columns_for(dataset, cfg):
+def columns_for(dataset, cfg, datasets=DATASETS, default_included=DEFAULT_INCLUDED):
     """Saved column layout for a dataset, reconciled with the fields that currently exist."""
     if not cfg.get(dataset):
-        return default_columns(dataset)
-    known = set(DATASETS[dataset])
+        return default_columns(dataset, datasets, default_included)
+    known = set(datasets[dataset])
     saved = [c for c in cfg[dataset] if c.get("field") in known or is_blank(c)]
     seen = {c["field"] for c in saved}
-    return saved + [c for c in default_columns(dataset)
+    return saved + [c for c in default_columns(dataset, datasets, default_included)
                     if c["field"] not in seen and not is_blank(c)]
 
 
 class ExportDialog(tk.Toplevel):
-    """get_rows(dataset) must return a list of dicts for "Runners" or "Races"."""
+    """get_rows(dataset) must return a list of dicts for "Runners" or "Races".
 
-    def __init__(self, parent, get_rows, initialdir):
+    datasets/default_included default to the results fields; pass others (e.g. racecards)
+    with a config_key so their column setup is saved separately in export_config.json.
+    """
+
+    def __init__(self, parent, get_rows, initialdir, datasets=None, default_included=None,
+                 config_key=None, file_prefix=""):
         super().__init__(parent)
         self.title("Export CSV")
         self.geometry("580x620")
         self.transient(parent)
         self.get_rows = get_rows
         self.initialdir = initialdir
-        self.cfg = load_config()
+        self.datasets = datasets or DATASETS
+        self.default_included = default_included or DEFAULT_INCLUDED
+        self.file_prefix = file_prefix
+        self.full_cfg = load_config()
+        self.cfg = self.full_cfg.setdefault(config_key, {}) if config_key else self.full_cfg
 
         top = ttk.Frame(self, padding=8)
         top.pack(fill="x")
         ttk.Label(top, text="Dataset").pack(side="left")
-        self.dataset_var = tk.StringVar(value=self.cfg.get("_dataset", "Runners"))
-        cb = ttk.Combobox(top, textvariable=self.dataset_var, values=list(DATASETS),
+        ds = self.cfg.get("_dataset", "Runners")
+        self.dataset_var = tk.StringVar(value=ds if ds in self.datasets else next(iter(self.datasets)))
+        cb = ttk.Combobox(top, textvariable=self.dataset_var, values=list(self.datasets),
                           state="readonly", width=12)
         cb.pack(side="left", padx=6)
         cb.bind("<<ComboboxSelected>>", lambda e: self._switch_dataset())
@@ -123,12 +133,15 @@ class ExportDialog(tk.Toplevel):
 
         side = ttk.Frame(mid, padding=(8, 0, 0, 0))
         side.pack(side="left", fill="y")
-        for label, cmd in [("Top", lambda: self._move("top")), ("Up", lambda: self._move(-1)),
-                           ("Down", lambda: self._move(1)), ("Bottom", lambda: self._move("bottom")),
-                           (None, None), ("Toggle", self._toggle), ("All", lambda: self._set_all(True)),
-                           ("None", lambda: self._set_all(False)), (None, None),
-                           ("Add blank", self._add_blank), ("Remove", self._remove_blank),
-                           (None, None), ("RP layout", self._rp_layout), ("Reset", self._reset)]:
+        buttons = [("Top", lambda: self._move("top")), ("Up", lambda: self._move(-1)),
+                   ("Down", lambda: self._move(1)), ("Bottom", lambda: self._move("bottom")),
+                   (None, None), ("Toggle", self._toggle), ("All", lambda: self._set_all(True)),
+                   ("None", lambda: self._set_all(False)), (None, None),
+                   ("Add blank", self._add_blank), ("Remove", self._remove_blank), (None, None)]
+        if self.datasets is DATASETS:  # the Racing Post layout only fits results
+            buttons.append(("RP layout", self._rp_layout))
+        buttons.append(("Reset", self._reset))
+        for label, cmd in buttons:
             if label is None:
                 ttk.Separator(side).pack(fill="x", pady=6)
             else:
@@ -162,7 +175,7 @@ class ExportDialog(tk.Toplevel):
         if not initial:
             self._remember()
         ds = self.dataset_var.get()
-        self.columns = columns_for(ds, self.cfg)
+        self.columns = columns_for(ds, self.cfg, self.datasets, self.default_included)
         self.count_var.set(f"{len(self.get_rows(ds))} rows")
         self._render()
 
@@ -266,13 +279,13 @@ class ExportDialog(tk.Toplevel):
                 used.add(field)
             cols.append(col)
         cols += [{"field": f, "header": f, "include": False}
-                 for f in DATASETS["Runners"] if f not in used]
+                 for f in self.datasets["Runners"] if f not in used]
         self.columns = cols
         self.exclude_nr_var.set(True)
         self._render(0)
 
     def _reset(self):
-        self.columns = default_columns(self.dataset_var.get())
+        self.columns = default_columns(self.dataset_var.get(), self.datasets, self.default_included)
         self._render()
 
     # --- save -------------------------------------------------------------
@@ -281,7 +294,7 @@ class ExportDialog(tk.Toplevel):
         self.cfg[self.dataset_var.get()] = self.columns
         self.cfg["_dataset"] = self.dataset_var.get()
         self.cfg["_exclude_nr"] = self.exclude_nr_var.get()
-        save_config(self.cfg)
+        save_config(self.full_cfg)
 
     def _close(self):
         self._remember()
@@ -308,7 +321,7 @@ class ExportDialog(tk.Toplevel):
             return
         path = filedialog.asksaveasfilename(
             parent=self, initialdir=self.initialdir, defaultextension=".csv",
-            initialfile=f"{ds.lower()}.csv", filetypes=[("CSV", "*.csv"), ("All files", "*")])
+            initialfile=f"{self.file_prefix}{ds.lower()}.csv", filetypes=[("CSV", "*.csv"), ("All files", "*")])
         if not path:
             return
         with open(path, "w", newline="", encoding="utf-8-sig") as f:

@@ -2,17 +2,20 @@
 """Tkinter front-end for join_csv_files.
 
 Pick some CSV files, put them in order, choose where to save, and they are
-combined into one file keeping only the first file's header row.
+combined into one file keeping only the first file's header row. Optionally
+append to an existing file instead, skipping rows it already contains.
 """
 import csv
+import json
 import os
 import tkinter as tk
 from pathlib import Path
 from tkinter import filedialog, messagebox, ttk
 
-from join_csv_files import combine_csv_files
+from join_csv_files import append_csv_files, combine_csv_files
 
 CSV_TYPES = [("CSV files", "*.csv"), ("All files", "*.*")]
+SETTINGS_FILE = Path.home() / ".join_csv_gui.json"
 
 
 def read_header(path):
@@ -35,9 +38,11 @@ def header_mismatches(paths):
 class JoinCsvApp(ttk.Frame):
     def __init__(self, master):
         super().__init__(master, padding=12)
-        self.output_var = tk.StringVar()
+        settings = self.load_settings()
+        self.output_var = tk.StringVar(value=settings.get("output", ""))
+        self.append_var = tk.BooleanVar(value=True)
         self.status_var = tk.StringVar(value="Add the CSV files you want to join.")
-        self.last_dir = str(Path.cwd())
+        self.last_dir = settings.get("last_dir") or str(Path.cwd())
         self._build()
 
     def _build(self):
@@ -78,10 +83,28 @@ class JoinCsvApp(ttk.Frame):
             row=0, column=1, sticky="ew", padx=6)
         ttk.Button(out_frame, text="Browse…", command=self.choose_output).grid(row=0, column=2)
 
+        ttk.Checkbutton(out_frame, variable=self.append_var,
+                        text="Append to output file if it exists (skip rows already in it)").grid(
+            row=1, column=1, columnspan=2, sticky="w", padx=6, pady=(6, 0))
+
         ttk.Button(self, text="Combine", command=self.combine).grid(
             row=3, column=0, columnspan=2, sticky="e", pady=(12, 0))
         ttk.Label(self, textvariable=self.status_var, foreground="#555").grid(
             row=4, column=0, columnspan=2, sticky="w", pady=(8, 0))
+
+    # ---------- settings ----------
+    def load_settings(self):
+        try:
+            return json.loads(SETTINGS_FILE.read_text())
+        except (OSError, ValueError):
+            return {}
+
+    def save_settings(self):
+        data = {"output": self.output_var.get().strip(), "last_dir": self.last_dir}
+        try:
+            SETTINGS_FILE.write_text(json.dumps(data, indent=2))
+        except OSError:
+            pass
 
     def files(self):
         return list(self.file_list.get(0, tk.END))
@@ -130,7 +153,8 @@ class JoinCsvApp(ttk.Frame):
         path = filedialog.asksaveasfilename(title="Save combined CSV as",
                                             defaultextension=".csv", filetypes=CSV_TYPES,
                                             initialdir=self.last_dir,
-                                            initialfile="combined.csv")
+                                            initialfile="combined.csv",
+                                            confirmoverwrite=not self.append_var.get())
         if path:
             self.output_var.set(path)
 
@@ -153,8 +177,13 @@ class JoinCsvApp(ttk.Frame):
                                  "The output file is also one of the input files and would be overwritten.")
             return
 
+        appending = (self.append_var.get() and os.path.exists(output)
+                     and os.path.getsize(output) > 0)
+        # When appending, the existing output's header is the one to match
+        check = [output] + inputs if appending else inputs
+
         try:
-            mismatched = header_mismatches(inputs)
+            mismatched = header_mismatches(check)
         except StopIteration:
             messagebox.showerror("Empty file", "One of the input files is empty (no header row).")
             return
@@ -162,12 +191,12 @@ class JoinCsvApp(ttk.Frame):
             messagebox.showerror("Could not read files", str(exc))
             return
         if mismatched:
-            first_name = os.path.basename(inputs[0])
+            first_name = os.path.basename(check[0])
             details = "\n".join(f"• {os.path.basename(f)}: {', '.join(h)}" for f, h in mismatched)
             if not messagebox.askyesno(
                     "Headers don't match",
                     f"These files have different headers from {first_name}\n"
-                    f"({', '.join(read_header(inputs[0]))}):\n\n{details}\n\n"
+                    f"({', '.join(read_header(check[0]))}):\n\n{details}\n\n"
                     "Their header rows will be dropped and their columns may not line up.\n"
                     "Combine anyway?",
                     icon=messagebox.WARNING):
@@ -175,14 +204,24 @@ class JoinCsvApp(ttk.Frame):
                 return
 
         try:
-            combine_csv_files(inputs, output)
+            if self.append_var.get():
+                added, skipped = append_csv_files(inputs, output)
+            else:
+                combine_csv_files(inputs, output)
         except StopIteration:
             messagebox.showerror("Empty file", "One of the input files is empty (no header row).")
             return
         except (OSError, UnicodeDecodeError) as exc:
             messagebox.showerror("Could not combine files", str(exc))
             return
+        self.save_settings()
 
+        if self.append_var.get():
+            summary = (f"Appended {added} new row(s) from {len(inputs)} file(s) to {output}; "
+                       f"skipped {skipped} already there.")
+            self.status_var.set(summary)
+            messagebox.showinfo("Done", summary)
+            return
         self.status_var.set(f"Combined {len(inputs)} file(s) into {output}")
         messagebox.showinfo("Done", f"Combined {len(inputs)} file(s) into:\n{output}")
 
