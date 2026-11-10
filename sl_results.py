@@ -28,7 +28,7 @@ import requests
 BASE = "https://www.sportinglife.com"
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
 NEXT_DATA_RE = re.compile(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', re.S)
-UK_IRE = {"England", "Scotland", "Wales", "Northern Ireland", "Ireland", "Eire"}
+UK_IRE = {"United Kingdom", "England", "Scotland", "Wales", "Northern Ireland", "Ireland", "Eire"}
 UK_TZ = ZoneInfo("Europe/London")
 # Races in these stages have a settled result and are safe to cache.
 FINAL_STAGES = {"WEIGHEDIN", "RESULT", "ABANDONED"}
